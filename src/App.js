@@ -1,5 +1,6 @@
 import './App.css';
 import React, {useState, useEffect} from 'react';
+import Link from './Link';
 
 
 function App() {
@@ -7,7 +8,8 @@ function App() {
     randomImage: "https://images.dog.ceo/breeds/sheepdog-shetland/n02105855_9903.jpg"
   })
   const [allDogs, setAllDogs] = useState("");
-  const [count, setCount] = React.useState(0);
+  const [count, setCount] = useState(0);
+  const [pop, setPop] = useState(false);
 
   useEffect(() => {
     const fetchDog = async () => {
@@ -35,6 +37,8 @@ function App() {
       <h1>⭑☆ Dog API ☆⭑</h1>
       <img src={dog.randomImage} alt="Randomly generated dog" className="dogPic" />
       <button onClick={getDog} className="dogButton">Generate Serotonin</button>
+      <button className="sourceButton" onClick={() => setPop(true)}>Get Source!</button>
+      <Link trigger={pop} setTrigger={setPop}/>
     </div>
   );
 }
